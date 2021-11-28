@@ -7,6 +7,8 @@ from django.contrib.auth import login, authenticate,logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 
+from .models import Images
+
 
 def index(request):
     return render(request, "gallery/index.html")
@@ -59,6 +61,9 @@ def log_out(request):
 
 
 def userpage(request):
-    images = Image.objects.all()
+    images = Images.objects.all()
     return render(request, "gallery/profile.html",
-                  context)
+                  {
+                      "images":images.Image,
+                      "title": images.Title
+                  })
