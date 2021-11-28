@@ -1,0 +1,12 @@
+{% extends 'gallery/layout.html' %}
+
+{% block content %}
+    <center>
+        <p>Login</p>
+        <form method="post"action="{% url 'gallery:log_in' %}">
+            {% csrf_token %}
+            {{ login_form.as_p }}
+            <input type="submit"value="Login"name="user">
+        </form>
+    </center>
+{% endblock %}

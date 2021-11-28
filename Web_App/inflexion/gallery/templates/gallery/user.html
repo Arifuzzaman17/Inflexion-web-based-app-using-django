@@ -1,0 +1,12 @@
+{% extends 'gallery/layout.html' %}
+
+{% block content %}
+    <center>
+        <p>Creating User</p>
+        <form method="post"action="{% url 'gallery:register' %}">
+            {% csrf_token %}
+            {{ register_form.as_p }}
+            <input type="submit"value="save"name="user">
+        </form>
+    </center>
+{% endblock %}

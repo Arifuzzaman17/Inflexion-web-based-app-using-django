@@ -1,0 +1,27 @@
+from django.http import HttpResponse
+from django.shortcuts import redirect
+
+
+def unauthenticated(view_function):
+    def wrapper_function(request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect("gallery:index")
+        else:
+            return view_function(request, *args, **kwargs)
+
+    return wrapper_function
+
+
+def allowed_user(roles_allowed = []):
+    def decorator(view_function):
+        def wrapper_function(request, *args, **kwargs):
+            group = None
+            if request.user.groups.exists():
+                group = request.user.groups.all()[0].name
+            if group in roles_allowed:
+                return view_function(request, *args, **kwargs)
+            else:
+                return HttpResponse("You are not authorized to login this page")
+        return wrapper_function
+    return decorator
+
