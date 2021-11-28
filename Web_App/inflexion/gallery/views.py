@@ -59,6 +59,6 @@ def log_out(request):
 
 
 def userpage(request):
-    context = {}
+    images = Image.objects.all()
     return render(request, "gallery/profile.html",
                   context)

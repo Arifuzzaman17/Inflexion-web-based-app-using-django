@@ -1,1 +1,0 @@
-# Inflexion-web-based-app-using-django
