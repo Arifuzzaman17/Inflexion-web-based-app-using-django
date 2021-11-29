@@ -1,0 +1,15 @@
+{% extends 'gallery/layout.html' %}
+
+{% block content %}
+    <center>
+
+        {% if user.is_authenticated %}
+            <p>Hello, <b>{{ user.username }}</b></p>
+            <p> You have been logged in through <b>{{ user.email }}</b></p>
+            <a href="{% url 'gallery:log_out' %}"><button>Log Out </button></a>
+            <a href="{% url 'gallery:register' %}"><button>Register</button></a>
+            <a href="{% url 'gallery:userpage' %}"><button>Uploaded Images</button></a>
+
+        {% endif %}
+    </center>
+{% endblock %}

@@ -1,6 +1,7 @@
 {% extends 'gallery/layout.html' %}
 
 {% block content %}
+<a href="{% url 'gallery:log_out' %}"><button>Log Out </button></a>
 <p>Gallery</p>
 {% for i in images %}
     <img src="{{ i.image.url }}">

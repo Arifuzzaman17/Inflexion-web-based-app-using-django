@@ -14,7 +14,6 @@ def index(request):
     return render(request, "gallery/index.html")
 
 
-
 @allowed_user(roles_allowed=['admin'])
 def register(request):
     if request.method == "POST":
@@ -68,3 +67,17 @@ def adminpage(request):
                   {
                       "images": images
                   })
+
+@login_required
+def upload_image(request):
+    if request.method == "POST":
+        image_details = Images()
+        image_details.image = request.FILES['image']
+
+        image_details.title = request.POST.get('title')
+        image_details.save()
+        messages.success(request, "Image has been uploaded successfully")
+        return render(request, "gallery/upload.html",
+                      {"images": image_details})
+    return render(request, "gallery/upload.html")
+

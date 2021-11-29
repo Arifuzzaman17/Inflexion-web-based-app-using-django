@@ -12,7 +12,7 @@
                 <a href="{% url 'gallery:register' %}"><button>Register</button></a>
                 <a href="{% url 'gallery:userpage' %}"><button>Uploaded Images</button></a>
             {% else %}
-            <input>
+            <a href="{% url 'gallery:upload' %}"><button>Uploaded Images</button></a>
             {% endif %}
         {% else %}
             <p>No you are not logged in</p>

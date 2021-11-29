@@ -1,0 +1,17 @@
+{% extends 'gallery/layout.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<center>
+    <p>Add Image</p>
+    <form method="POST" action="{% url 'gallery:upload_image' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="image" >
+        <input type="text" placeholder="title" name="title" >
+        <button type="submit">Post</button>
+    </form>
+    <br><br>
+        <a href="{% url 'gallery:log_out' %}"><button>Log Out </button></a>
+</center>
+{% endif %}
+{% endblock %}
