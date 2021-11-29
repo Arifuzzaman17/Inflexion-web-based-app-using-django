@@ -64,6 +64,5 @@ def userpage(request):
     images = Images.objects.all()
     return render(request, "gallery/profile.html",
                   {
-                      "images":images.Image,
-                      "title": images.Title
+                      "images": images.Image
                   })
