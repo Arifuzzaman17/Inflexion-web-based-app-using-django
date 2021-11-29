@@ -11,6 +11,8 @@
             {% if name == "admin" %}
                 <a href="{% url 'gallery:register' %}"><button>Register</button></a>
                 <a href="{% url 'gallery:userpage' %}"><button>Uploaded Images</button></a>
+            {% else %}
+            <input>
             {% endif %}
         {% else %}
             <p>No you are not logged in</p>

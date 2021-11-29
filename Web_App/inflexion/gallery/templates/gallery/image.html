@@ -1,0 +1,8 @@
+{% extends 'gallery/layout.html' %}
+
+{% block content %}
+<p>Gallery</p>
+{% for i in images %}
+    <img src="{{ i.image.url }}">
+{% endfor %}
+{% endblock %}

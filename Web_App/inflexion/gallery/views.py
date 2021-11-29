@@ -60,9 +60,11 @@ def log_out(request):
     return redirect('gallery:index')
 
 
-def userpage(request):
+@login_required
+@allowed_user(roles_allowed=['admin'])
+def adminpage(request):
     images = Images.objects.all()
-    return render(request, "gallery/profile.html",
+    return render(request, "gallery/image.html",
                   {
-                      "images": images.Image
+                      "images": images
                   })
